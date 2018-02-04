@@ -20,7 +20,7 @@ def start(bot, update):
 start_handler = CommandHandler('start', start)
 dispatcher.add_handler(start_handler)
 
-def convertOgg():
+def convertOgg(bot, update):
     voice = update.message.voice.file_id
 
     process = api.convert({
@@ -34,8 +34,12 @@ def convertOgg():
     return process
 
 def overall(bot, update):
-    # convert function
-    # wit.ai voice to text function
+    convertOgg()
+
+    resp = None
+    with open(process, 'rb') as f:
+      resp = client.speech(f, None, {'Content-Type': 'audio/wav'})
+    print(str(resp))
 
 overall_handler = MessageHandler(Filters.voice, overall)
 dispatcher.add_handler(overall_handler)
