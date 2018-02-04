@@ -33,7 +33,6 @@ def convertOgg():
     process.wait()
     return process
 
-
 def overall(bot, update):
     # convert function
     # wit.ai voice to text function
